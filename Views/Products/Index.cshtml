@@ -1,0 +1,228 @@
+﻿@model IEnumerable<pms_mvc_example.Models.Product>
+
+@{
+    ViewData["Title"] = "Our Products";
+}
+
+<style>
+    .products-page {
+        padding: 30px 0;
+    }
+
+    .products-heading {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .products-heading h1 {
+            font-weight: 700;
+            color: #4f3674;
+        }
+
+        .products-heading p {
+            color: #777;
+            font-size: 16px;
+        }
+
+    .product-card {
+        height: 100%;
+        border: none;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.09);
+        transition: transform 0.2s ease;
+        background-color: #fff;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .product-image {
+        width: 100%;
+        height: 210px;
+        object-fit: contain;
+        padding: 15px;
+        background: #f8f5fc;
+    }
+
+    .product-title {
+        color: #4f3674;
+        font-weight: 700;
+    }
+
+    .product-price {
+        color: #6841a5;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .product-status {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        background: #eee7f8;
+        color: #563786;
+        font-size: 13px;
+    }
+
+    .product-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+        .product-buttons .btn {
+            flex: 1;
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 9px 12px;
+        }
+
+    .btn-edit {
+        background-color: #6841a5;
+        color: white;
+        border: none;
+    }
+
+        .btn-edit:hover {
+            background-color: #4f3674;
+            color: white;
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+        .btn-delete:hover {
+            background-color: #bb2d3b;
+            color: white;
+        }
+
+    .success-message {
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: #e8f7ed;
+        color: #216e39;
+        margin-bottom: 20px;
+    }
+
+    .empty-message {
+        text-align: center;
+        padding: 40px;
+        background: #f8f5fc;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container products-page">
+
+    <div class="products-heading">
+        <h1>Our Products</h1>
+        <p>Discover our lovely collection of products.</p>
+
+        <a asp-controller="Products"
+           asp-action="Create"
+           class="btn btn-edit mt-2">
+            + Add New Product
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="success-message">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+
+            @foreach (var product in Model)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card product-card">
+
+                        @if (!string.IsNullOrWhiteSpace(product.Image))
+                        {
+                            <img src="@product.Image"
+                                 alt="@product.Title"
+                                 class="product-image" />
+                        }
+                        else
+                        {
+                            <div class="product-image d-flex align-items-center justify-content-center">
+                                No image available
+                            </div>
+                        }
+
+                        <div class="card-body p-4">
+
+                            <h4 class="product-title">
+                                @product.Title
+                            </h4>
+
+                            <p class="text-muted">
+                                @product.Description
+                            </p>
+
+                            <div class="product-price mb-3">
+                                Rs. @product.Price.ToString("N0")
+                            </div>
+
+                            <p>
+                                <strong>Quantity:</strong>
+                                @product.Quantity
+                            </p>
+
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="product-status">
+                                    @product.Status
+                                </span>
+                            </p>
+
+                            <div class="product-buttons">
+
+                                <a asp-controller="Products"
+                                   asp-action="Edit"
+                                   asp-route-id="@product.Id"
+                                   class="btn btn-edit">
+                                    Edit
+                                </a>
+
+                                <a asp-controller="Products"
+                                   asp-action="Delete"
+                                   asp-route-id="@product.Id"
+                                   class="btn btn-delete">
+                                    Delete
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="empty-message">
+            <h4>No products found</h4>
+            <p>Add products to your database to display them here.</p>
+
+            <a asp-controller="Products"
+               asp-action="Create"
+               class="btn btn-edit">
+                Add Your First Product
+            </a>
+        </div>
+    }
+
+</div>

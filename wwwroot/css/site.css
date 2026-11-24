@@ -1,0 +1,232 @@
+/* ==========================================================
+   Lavender & Lilac Theme
+   ========================================================== */
+:root {
+  --lav-50:  #faf7ff;   /* page background */
+  --lav-100: #f3ecfd;   /* soft surfaces */
+  --lav-200: #e6d9f8;   /* borders, table stripes */
+  --lav-300: #d4bff2;   /* lilac */
+  --lav-400: #bfa2ea;   /* lavender */
+  --lav-500: #a883dc;   /* accent */
+  --lav-600: #8e63c9;   /* primary */
+  --lav-700: #744db0;   /* primary hover */
+  --lav-800: #5a3b8c;   /* dark purple */
+  --lav-900: #3f2a63;   /* text headings */
+  --lav-text: #3b3050;
+}
+
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: var(--lav-50);
+  color: var(--lav-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--lav-900);
+}
+
+a {
+  color: var(--lav-600);
+}
+a:hover {
+  color: var(--lav-800);
+}
+
+hr {
+  color: var(--lav-300);
+  opacity: 1;
+}
+
+.text-muted {
+  color: #8a7ea3 !important;
+}
+
+/* ---------- Navbar & footer ---------- */
+.navbar {
+  background: linear-gradient(90deg, var(--lav-100) 0%, var(--lav-200) 100%) !important;
+  border-bottom: 1px solid var(--lav-300) !important;
+}
+.navbar .navbar-brand {
+  color: var(--lav-800);
+  font-weight: 600;
+}
+.navbar .nav-link,
+.navbar .nav-link.text-dark {
+  color: var(--lav-800) !important;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.text-dark:hover {
+  color: var(--lav-600) !important;
+}
+.navbar-light .navbar-toggler {
+  border-color: var(--lav-400);
+}
+
+.footer {
+  background-color: var(--lav-100);
+  border-top: 1px solid var(--lav-300) !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  color: #fff;
+  background-color: var(--lav-600);
+  border-color: var(--lav-600);
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  color: #fff;
+  background-color: var(--lav-700);
+  border-color: var(--lav-700);
+}
+
+.btn-secondary {
+  color: var(--lav-800);
+  background-color: var(--lav-200);
+  border-color: var(--lav-300);
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  color: var(--lav-900);
+  background-color: var(--lav-300);
+  border-color: var(--lav-400);
+}
+
+.btn-success {
+  color: #fff;
+  background-color: var(--lav-500);
+  border-color: var(--lav-500);
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  color: #fff;
+  background-color: var(--lav-700);
+  border-color: var(--lav-700);
+}
+
+.btn-warning {
+  color: var(--lav-900);
+  background-color: var(--lav-300);
+  border-color: var(--lav-400);
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active {
+  color: var(--lav-900);
+  background-color: var(--lav-400);
+  border-color: var(--lav-500);
+}
+
+/* Delete keeps a muted rose so it still reads as destructive */
+.btn-danger {
+  color: #fff;
+  background-color: #c76b98;
+  border-color: #c76b98;
+}
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+  color: #fff;
+  background-color: #a94f7c;
+  border-color: #a94f7c;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--lav-400);
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+  border-color: var(--lav-300);
+  background-color: #fff;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--lav-500);
+}
+.form-label {
+  color: var(--lav-800);
+  font-weight: 500;
+}
+.form-check-input:checked {
+  background-color: var(--lav-600);
+  border-color: var(--lav-600);
+}
+
+/* ---------- Table ---------- */
+.table {
+  --bs-table-bg: #fff;
+  --bs-table-striped-bg: var(--lav-50);
+  --bs-table-hover-bg: var(--lav-100);
+  color: var(--lav-text);
+  background-color: #fff;
+}
+.table-bordered > :not(caption) > * > * {
+  border-color: var(--lav-200);
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: var(--lav-50);
+  color: var(--lav-text);
+}
+.table-hover > tbody > tr:hover > * {
+  background-color: var(--lav-100);
+  color: var(--lav-text);
+}
+.table-dark,
+.table-dark > th,
+.table-dark > td,
+thead.table-dark > tr > th {
+  background-color: var(--lav-600) !important;
+  border-color: var(--lav-700) !important;
+  color: #fff !important;
+}
+
+/* ---------- Badges & alerts ---------- */
+.badge.bg-success {
+  background-color: var(--lav-500) !important;
+  color: #fff;
+}
+.alert-success {
+  color: var(--lav-900);
+  background-color: var(--lav-100);
+  border-color: var(--lav-300);
+}
+.alert-info {
+  color: var(--lav-800);
+  background-color: var(--lav-100);
+  border-color: var(--lav-200);
+}
+.alert-warning {
+  color: #6a4a1f;
+  background-color: #fbf1e6;
+  border-color: #efd9bd;
+}
+.btn-close:focus {
+  box-shadow: 0 0 0 0.25rem rgba(168, 131, 220, 0.35);
+}
+
+/* ---------- Misc ---------- */
+.rounded {
+  border: 1px solid var(--lav-200);
+}
+::selection {
+  background: var(--lav-300);
+  color: var(--lav-900);
+}
